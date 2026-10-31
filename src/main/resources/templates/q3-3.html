@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <div th:switch="${num}">
+        今日のあなたの運勢は
+        <span th:case="1" th:text="大吉"></span>
+        <span th:case="2" th:text="吉"></span>
+        <span th:case="3" th:text="中吉"></span>
+        <span th:case="4" th:text="小吉"></span>
+        <span th:case="*" th:text="凶"></span>
+        です
+    </div>
+</body>
+</html>

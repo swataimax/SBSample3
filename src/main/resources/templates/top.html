@@ -1,48 +1,41 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-	<meta charset="UTF-8">
-	<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>Thymeleafの機能</title>
 </head>
-
 <body>
+    <div>
+        <div>文字列リテラル</div>
+        <p th:text="'red black tree'"></p>
+        <p th:text="'red' + ' black' + ' tree'"></p>
+        <p th:text="'red' + ' black' + ${a}"></p>
+        <p th:text="${'red' + ' black' + a}"></p>
+    </div>
+    <hr>
 	<div>
-		<div>文字列リテラル</div>
-		<p th:text="${a}"></p>
-		<p th:text="${x}"></p>
-		<p th:text="'red \' black tree'"></p>
-		<p th:text="'red black tree'"></p>
-		<p th:text="'red' + ' black' + ' tree'"></p>
-		<p th:text="'red' + ' black' + ${a}"></p>
-		<p th:text="${'red' + ' black' + a}"></p>
+	    <div>リンクURL</div>
+	    <a th:href=
+	         "@{https://google.com/search?q={y}(y=${x})}">検索   
+	    </a>
 	</div>
 	<hr>
 	<div>
-		<div>リンクURL</div>
-		<a th:href="@{https://google.com/search?q={y}(y=${x})}">検索
-		</a>
-		<br>
-		<a th:href="@{https://google.com/search?q=猫}">検索
-		</a>
+	    <div>オブジェクトのプロパティ</div>
+	    <div th:text="${student.id}"></div>
+	    <div th:text="${student.name}"></div>
+	    <div th:object="${student}">
+	        <div th:text="*{id}"></div>
+	        <div th:text="*{name}"></div>
+	    </div>
 	</div>
-	<hr>
-	<div>
-		<div>オブジェクトのプロパティ</div>
-		<div th:text="${student.id}"></div>
-		<div th:text="${student.name}"></div>
-		<div th:object="${student}">
-			<div th:text="*{id}"></div>
-			<div th:text="*{name}"></div>
-		</div>
-	</div>
-
-	<hr>
-	<div>
-		<div>ユーティリティオブジェクト</div>
-		<p th:text="${#temporals.format(ldt, 'yyyy/MM/dd HH:mm')}"></p>
-	</div>
-
+    <hr>
+    <div>
+        <div>ユーティリティオブジェクト</div>
+        <p th:text=
+        "${#temporals.format(ldt, 'yyyy/MM/dd HH:mm')}"></p>
+    </div>
 </body>
-
 </html>
+
+   
