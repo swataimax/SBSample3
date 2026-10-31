@@ -30,18 +30,6 @@ public class ThymeleafController {
 		return "top"; 
 	}
 	
-	@GetMapping("index")
-	public String index(Model model) {
-		List<Student> list = new ArrayList<>();
-		list.add(new Student(1, "山田太郎"));
-		list.add(new Student(2, "佐藤次郎"));
-		list.add(new Student(3, "山田花子"));
-		
-		model.addAttribute("list", list);
-		model.addAttribute("num", 1); // 値を1,2,0と変更して実施
-		
-		return "index";
-	}
 	
 	// 問題１
 	@GetMapping("/q3-1")
@@ -55,12 +43,29 @@ public class ThymeleafController {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		Member member = new Member(
-				"佐藤次郎", 25, date, "東京都西新宿1-1-1");
+//		Member member = new Member("佐藤次郎", 25, date, "東京都西新宿1-1-1");
+		Member member = new Member("佐藤次郎", 25, date, localDate, "東京都西新宿1-1-1");	// 問題はDateクラスだが、LocalDateクラスで作っておく
 		model.addAttribute("member", member);
 		System.out.println(member.getAge());
 		return "q3-1";
-	}	
+	}
+	
+	
+	
+	// th:if、th:unless属性～
+	
+	@GetMapping("/index")		// @GetMapping("index") でも動いた
+	public String index(Model model) {
+		List<Student> list = new ArrayList<>();
+		list.add(new Student(1, "山田太郎"));
+		list.add(new Student(2, "佐藤次郎"));
+		list.add(new Student(3, "山田花子"));
+		
+		model.addAttribute("list", list);
+		model.addAttribute("num", 1); // 値を1,2,0と変更して実施
+		
+		return "index";
+	}
 	
 	
 	// 問題２
@@ -79,6 +84,7 @@ public class ThymeleafController {
 		
 		return "q3-2";
 	}
+	
 	
 	// 問題３
 	@GetMapping("/q3-3")

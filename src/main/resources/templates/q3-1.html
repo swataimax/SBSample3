@@ -8,8 +8,8 @@
     <div th:object="${member}">
         <p th:text="*{'名前　：' + name}"></p>
         <p th:text="*{'年齢　：' + age}"></p>
-        <p th:text="*{'誕生日：' + 
-                    #dates.format(birthDay,'yyyy年MM月dd日')}"></p>
+<!--        <p th:text="*{'誕生日：' + #dates.format(birthDay,'yyyy年MM月dd日')}"></p>-->
+		<p th:text="*{'誕生日：' + #temporals.format(birthDay2, 'yyyy年MM月dd日')}"></p>
         <p th:text="*{'住所　：' + address}"></p>
     </div>
 </body>
